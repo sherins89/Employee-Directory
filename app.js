@@ -13,20 +13,22 @@ app.get("/employees", (req, res) => {
   res.status(200).json(employees);
 });
 
-// Employee by id //
-app.get("/employees/:id", (res, req) => {
-  const empid = Number(req.params.id);
-  const foundemployee = employees.find((emp) => emp.id === empid);
-  if (!foundemployee) {
-    return res.status(404).send("No employee found with that ID");
-  }
-});
-
-// GET Random Employee //
+// GET Random Employee // Tells you to initiate random before ALL employees //
 app.get("/employees/random", (req, res) => {
   const randomidx = Math.floor(Math.random() * employees.length);
   const randomemp = employees[randomidx];
   res.status(200).json(randomemp);
+});
+
+// Employee by id //
+app.get("/employees/:id", (req, res) => {
+  console.log(typeof req.params.id);
+  const id = Number(req.params.id);
+  const foundemployee = employees.find((emp) => emp.id === id);
+  if (!foundemployee) {
+    return res.status(404).send("Employee Not Found");
+  }
+  res.status(200).json(foundemployee);
 });
 
 export default app;
