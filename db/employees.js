@@ -11,4 +11,4 @@ const employees = [
   { id: 10, name: "Gwen Grollmann" },
 ];
 
-export default employees;
+export default employees; // correct for ESM codes type = "module" //
